@@ -1,0 +1,53 @@
+package numbergame;
+
+import java.util.Random;
+import java.util.Scanner;
+
+public class numbergamejava {
+
+	public static void main(String[] args) {
+		Random r = new Random();
+		Scanner sc = new Scanner(System.in);
+		int playerchance=8;
+		int endofprogram=0;
+		boolean playagain = true;
+			System.out.println("welcome the game");
+			while(playagain) {
+				int random=getrandN(1,100);
+				boolean guess=false;
+				do {
+				for(int i=0;i<playerchance;i++) {
+					System.out.println("enter your guessed number:");
+					int user=sc.nextInt();
+					if(user==random) {
+						guess=true;
+						endofprogram+=1;
+						System.out.println("you won it");
+						break;
+					}
+					
+					else if(user>random) {
+						System.out.println("too high");
+					}
+					else {
+						System.out.println("too low");
+						
+					}
+				} 
+				if(guess==false){
+				System.out.println("sorry.you lost the chances. the number is"+random);
+				}
+				System.out.println("do you want to play again(y/n)");
+				String pa=sc.next();
+				playagain=pa.equalsIgnoreCase("y");
+			
+		}
+			System.out.println(" OOPS! you lost the game thanks for playing hope you enjoyed it");
+			System.out.println("here the score"+ endofprogram);
+	}
+			public static int getrandN(int min,int max){ 
+			return(int)(Math.random()*(max-min+1)+min);
+			}
+	
+
+}
